@@ -9,23 +9,27 @@ namespace training.netcorenvc.Models
         public int TransactionId { get; set; }
 
         [Column(TypeName ="nvarchar(12)")]
-        [Required]
+        [Required(ErrorMessage ="This field is required")]
         public string AccountNumber { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        [Required]
+        [Required(ErrorMessage = "This field is required")]
+        [MaxLength(12,ErrorMessage ="Maximum 12 characters only.")]
         public string BeneficiaryName { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        [Required]
+        [Required(ErrorMessage = "This field is required")]
         public string BankName { get; set; }
 
         [Column(TypeName = "nvarchar(11)")]
-        [Required]
+        [Required(ErrorMessage = "This field is required")]
+        [MaxLength(11, ErrorMessage = "Maximum 11 characters only.")]
         public string SWIFTcode { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "This field is required")]
         public int Amount { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:MMM-dd-yy}")]
         public DateTime Date { get; set; }
     }   
 }
